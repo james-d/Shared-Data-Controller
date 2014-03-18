@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="MainController">
+	<fx:define>
+		<ToggleGroup fx:id="contentSelectionToggleGroup" />
+	</fx:define>
+	<center>
+		<StackPane fx:id="contentHolder" />
+	</center>
+	<bottom>
+		<HBox spacing="5" alignment="CENTER">
+			<padding>
+				<Insets top="5" left="5" bottom="5" right="5" />
+			</padding>
+			<children>
+				<ToggleButton text="All contacts" toggleGroup="$contentSelectionToggleGroup"
+					fx:id="tableToggleButton" />
+				<ToggleButton text="New contact" toggleGroup="$contentSelectionToggleGroup"
+					fx:id="editorToggleButton" />
+			</children>
+		</HBox>
+	</bottom>
+</BorderPane>
+

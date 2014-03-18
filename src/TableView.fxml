@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="TableViewController">
+	<TableView fx:id="table">
+		<columns>
+			<TableColumn text="First Name" prefWidth="100">
+				<cellValueFactory>
+					<PropertyValueFactory property="firstName" />
+				</cellValueFactory>
+			</TableColumn>
+			<TableColumn text="Last Name" prefWidth="100">
+				<cellValueFactory>
+					<PropertyValueFactory property="lastName" />
+				</cellValueFactory>
+			</TableColumn>
+			<TableColumn text="Email" prefWidth="150">
+				<cellValueFactory>
+					<PropertyValueFactory property="email" />
+				</cellValueFactory>
+			</TableColumn>
+		</columns>
+	</TableView>
+</VBox>
+

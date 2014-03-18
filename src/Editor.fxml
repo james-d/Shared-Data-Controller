@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+
+<GridPane xmlns:fx="http://javafx.com/fxml" fx:controller="EditorController"
+	hgap="5" vgap="5">
+	<columnConstraints>
+		<ColumnConstraints halignment="RIGHT" hgrow="NEVER" />
+		<ColumnConstraints halignment="LEFT" hgrow="ALWAYS" />
+	</columnConstraints>
+	<Label text="First Name:">
+		<GridPane.rowIndex>0</GridPane.rowIndex>
+		<GridPane.columnIndex>0</GridPane.columnIndex>
+	</Label>
+	<TextField fx:id="firstName">
+		<GridPane.rowIndex>0</GridPane.rowIndex>
+		<GridPane.columnIndex>1</GridPane.columnIndex>
+	</TextField>
+	<Label text="Last Name:">
+		<GridPane.rowIndex>1</GridPane.rowIndex>
+		<GridPane.columnIndex>0</GridPane.columnIndex>
+	</Label>
+	<TextField fx:id="lastName">
+		<GridPane.rowIndex>1</GridPane.rowIndex>
+		<GridPane.columnIndex>1</GridPane.columnIndex>
+	</TextField>
+	<Label text="Email:">
+		<GridPane.rowIndex>2</GridPane.rowIndex>
+		<GridPane.columnIndex>0</GridPane.columnIndex>
+	</Label>
+	<TextField fx:id="email">
+		<GridPane.rowIndex>2</GridPane.rowIndex>
+		<GridPane.columnIndex>1</GridPane.columnIndex>
+	</TextField>
+	<HBox alignment="CENTER" spacing="5">
+		<padding>
+			<Insets top="5" bottom="5" left="5" right="5" />
+		</padding>
+		<GridPane.rowIndex>3</GridPane.rowIndex>
+		<GridPane.columnIndex>0</GridPane.columnIndex>
+		<GridPane.columnSpan>2</GridPane.columnSpan>
+		<Button text="Add" onAction="#addPerson" />
+		<Button text="Clear" onAction="#clearFields" />
+	</HBox>
+</GridPane>
+
