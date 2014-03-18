@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 
-<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="TableViewController">
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="TableViewController">
+<center>
 	<TableView fx:id="table">
 		<columns>
 			<TableColumn text="First Name" prefWidth="100">
@@ -25,5 +29,12 @@
 			</TableColumn>
 		</columns>
 	</TableView>
-</VBox>
+	</center>
+	<bottom>
+<HBox>
+<padding><Insets top="5" bottom="5" left="5" right="5"/></padding>
+<Button text="New..." onAction="#showEditor"/>
+</HBox>
+	</bottom>
+</BorderPane>
 

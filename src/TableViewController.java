@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
@@ -15,5 +17,11 @@ public class TableViewController {
 	
 	public void initialize() {
 		table.setItems(data);
+	}
+	
+	@FXML
+	private void showEditor() throws IOException {
+		SceneSelector selector = new SceneSelector(data);
+		selector.selectScene("Editor.fxml", table.getScene());
 	}
 }

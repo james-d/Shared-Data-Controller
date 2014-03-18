@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -18,14 +20,15 @@ public class EditorController {
 	}
 
 	@FXML
-	private void addPerson() {
+	private void addPerson() throws IOException {
 		data.add( new Person(
 				firstName.getText(), 
 				lastName.getText(), 
 				email.getText()
 			)
 		);
-		clearFields();
+		SceneSelector selector = new SceneSelector(data);
+		selector.selectScene("TableView.fxml", firstName.getScene());
 	}
 	
 	@FXML

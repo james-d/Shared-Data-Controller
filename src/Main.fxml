@@ -7,25 +7,10 @@
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.control.ToggleGroup?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="MainController">
-	<fx:define>
-		<ToggleGroup fx:id="contentSelectionToggleGroup" />
-	</fx:define>
+<BorderPane xmlns:fx="http://javafx.com/fxml" >
 	<center>
-		<StackPane fx:id="contentHolder" />
+		<fx:include source="TableView.fxml"/>
 	</center>
-	<bottom>
-		<HBox spacing="5" alignment="CENTER">
-			<padding>
-				<Insets top="5" left="5" bottom="5" right="5" />
-			</padding>
-			<children>
-				<ToggleButton text="All contacts" toggleGroup="$contentSelectionToggleGroup"
-					fx:id="tableToggleButton" />
-				<ToggleButton text="New contact" toggleGroup="$contentSelectionToggleGroup"
-					fx:id="editorToggleButton" />
-			</children>
-		</HBox>
-	</bottom>
+	
 </BorderPane>
 
