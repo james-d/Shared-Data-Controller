@@ -47,6 +47,7 @@
 		<GridPane.columnSpan>2</GridPane.columnSpan>
 		<Button text="Add" onAction="#addPerson" />
 		<Button text="Clear" onAction="#clearFields" />
+		<Button text="Cancel" onAction="#showTable" />
 	</HBox>
 </GridPane>
 

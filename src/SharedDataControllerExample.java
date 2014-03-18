@@ -18,23 +18,20 @@ public class SharedDataControllerExample extends Application {
 	public void start(Stage primaryStage) throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("Main.fxml"));
 		loader.setControllerFactory(new Callback<Class<?>, Object>() {
-
 			@Override
 			public Object call(Class<?> type) {
 				try {
-					Constructor<?> constructor = type.getConstructor(ObservableList.class);
-					return constructor.newInstance(createData());
-				} catch (NoSuchMethodException nsme) {
-					try {
-						return type.newInstance();
-					} catch (Exception e) {
-						e.printStackTrace();
-						return null ;
-					} 
+					for (Constructor<?> constructor : type.getDeclaredConstructors()) {
+						if (constructor.getParameterTypes().length == 1 && 
+								constructor.getParameterTypes()[0]==ObservableList.class) {
+							return constructor.newInstance(createData());
+						}
+					}
+					return type.newInstance();
 				} catch (Exception exc) {
 					exc.printStackTrace();
 					return null ;
-				}				
+				}
 			}
 			
 		});

@@ -14,20 +14,16 @@ public class SceneSelector {
 	
 	public SceneSelector(final ObservableList<Person> data) {
 		controllerFactory = new Callback<Class<?>, Object>() {
-
 			@Override
 			public Object call(Class<?> type) {
 				try {
-					Constructor<?> constructor = type
-							.getConstructor(ObservableList.class);
-					return constructor.newInstance(data);
-				} catch (NoSuchMethodException e) {
-					try {
-						return type.newInstance();
-					} catch (Exception e1) {
-						e1.printStackTrace();
-						return null ;
-					} 
+					for (Constructor<?> constructor : type.getDeclaredConstructors()) {
+						if (constructor.getParameterTypes().length == 1 && 
+								constructor.getParameterTypes()[0]==ObservableList.class) {
+							return constructor.newInstance(data);
+						}
+					}
+					return type.newInstance();
 				} catch (Exception exc) {
 					exc.printStackTrace();
 					return null ;

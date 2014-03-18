@@ -27,6 +27,11 @@ public class EditorController {
 				email.getText()
 			)
 		);
+		showTable();
+	}
+	
+	@FXML
+	private void showTable() throws IOException {
 		SceneSelector selector = new SceneSelector(data);
 		selector.selectScene("TableView.fxml", firstName.getScene());
 	}
