@@ -1,6 +1,5 @@
 
 import java.io.IOException;
-import java.lang.reflect.Constructor;
 import java.util.Arrays;
 
 import javafx.application.Application;
@@ -10,31 +9,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 
 public class SharedDataControllerExample extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("Main.fxml"));
-		loader.setControllerFactory(new Callback<Class<?>, Object>() {
-			@Override
-			public Object call(Class<?> type) {
-				try {
-					for (Constructor<?> constructor : type.getDeclaredConstructors()) {
-						if (constructor.getParameterTypes().length == 1 && 
-								constructor.getParameterTypes()[0]==ObservableList.class) {
-							return constructor.newInstance(createData());
-						}
-					}
-					return type.newInstance();
-				} catch (Exception exc) {
-					exc.printStackTrace();
-					return null ;
-				}
-			}
-			
-		});
+		loader.setControllerFactory(SceneSelector.createControllerFactory(createData()));
 		final Parent root = (Parent) loader.load();
 		final Scene scene = new Scene(root, 800, 600);
 		primaryStage.setScene(scene);

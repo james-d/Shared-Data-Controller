@@ -13,7 +13,17 @@ public class SceneSelector {
 	private final Callback<Class<?>, Object> controllerFactory ;
 	
 	public SceneSelector(final ObservableList<Person> data) {
-		controllerFactory = new Callback<Class<?>, Object>() {
+		controllerFactory = createControllerFactory(data);
+	}
+	
+	public void selectScene(String fxmlFile, Scene scene) throws IOException {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
+		loader.setControllerFactory(controllerFactory);
+		scene.setRoot((Parent)loader.load());
+	}
+	
+	public static final Callback<Class<?>, Object> createControllerFactory(final ObservableList<Person> data) {
+		return new Callback<Class<?>, Object>() {
 			@Override
 			public Object call(Class<?> type) {
 				try {
@@ -31,11 +41,5 @@ public class SceneSelector {
 			}
 			
 		};
-	}
-	
-	public void selectScene(String fxmlFile, Scene scene) throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
-		loader.setControllerFactory(controllerFactory);
-		scene.setRoot((Parent)loader.load());
 	}
 }
